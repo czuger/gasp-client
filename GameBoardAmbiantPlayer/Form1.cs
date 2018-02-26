@@ -46,10 +46,14 @@ namespace GameBoardAmbiantPlayer
             IPEndPoint remoteEP = new IPEndPoint(ipAddress, 6664);
 
             // Create a TCP/IP  socket.  
-            Socket reader = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            Debug.Write(sender);
+            Socket reader = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);    
             reader.Connect(remoteEP);
 
+            byte[] buffer = new byte[1024];
+
+            Debug.Write(reader.Receive(buffer));
+
+            Debug.Write(Encoding.Default.GetString(buffer));
 
         }
     }
