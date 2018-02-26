@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using NAudio.Wave;
-using NAudio.Wave.SampleProviders;
+using System.Net;
+using System.Net.Sockets;
+using System.Diagnostics;
 
 namespace GameBoardAmbiantPlayer
 {
@@ -33,35 +34,16 @@ namespace GameBoardAmbiantPlayer
         {
             InitializeComponent();
             var files = Directory.GetFiles(forest);
-            player_thread = new BackgroundPlayer(forest, files);
+            //player_thread = new BackgroundPlayer(forest, files);
 
-            //audioFile1 = new AudioFileReader(@path1 + "DayForest02.mp3");
-            //audioFile2 = new AudioFileReader(@path2 + "orgrimmar02-moment.mp3");
-            //fade1 = new FadeInOutSampleProvider(audioFile1, true);
-            //fade2 = new FadeInOutSampleProvider(audioFile2, true);
-            //outputDevice1 = new WaveOutEvent();
-            //outputDevice1.Init(fade1);
-            //outputDevice2 = new WaveOutEvent();
-            //outputDevice2.Init(fade2);
-        }
+            IPHostEntry ipHostInfo = Dns.GetHostEntry("vps39194.ovh.net");
+            IPAddress ipAddress = ipHostInfo.AddressList[0];
+            IPEndPoint remoteEP = new IPEndPoint(ipAddress, 6664);
 
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // Thread.Sleep(10000);
-            //fade1.BeginFadeOut(3000);
-            //Thread.Sleep(2000);
-            //outputDevice2.Play();
-            //fade2.BeginFadeIn(3000);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //play_forest();
-            //outputDevice1.Play();
-            //fade1.BeginFadeIn(1000);
-            // outputDevice1.Play();
+            // Create a TCP/IP  socket.  
+            Socket sender = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            Debug.Write(sender);
+            sender.Connect(remoteEP);
         }
     }
 }
