@@ -15,30 +15,44 @@ using Newtonsoft.Json;
 namespace GameBoardAmbiantPlayer
 {
     // Use https://github.com/naudio/NAudio
-    // {"battle":["battle/battle01.mp3","battle/battle02.mp3","battle/battle03.mp3","battle/battle04.mp3","battle/battle05.mp3","battle/battle06.mp3"],"sounds":["sounds/Forest"],"Forest":["Forest/DayForest01.mp3","Forest/DayForest02.mp3","Forest/DayForest03.mp3","Forest/NightForest01.mp3","Forest/NightForest02.mp3","Forest/NightForest03.mp3","Forest/NightForest04.mp3"]}
-
+ 
     public partial class Form1 : Form
     {
-        private static string forest = "../../sounds/Forest/";
-        private static string battle = "../../sounds/battle/";
-        BackgroundPlayer player_thread = null;
-
-        private void Battle_Click(object sender, EventArgs e)
-        {
-            player_thread.interrupt_play = true;
-            // var files = Directory.GetFiles(battle);
-            // player_thread = new BackgroundPlayer(battle, files);
-
-            var directories = Directory.GetDirectories("../../sounds");
-            Debug.Write(JsonConvert.SerializeObject(directories));
-        }
+        ConnectionSocket socket_thread = null;
+        //private Object m_lock = new Object();                       // Lock to protect counter increment 
+        //private Queue<string> m_queue = new Queue<string>();
 
         public Form1()
         {
             InitializeComponent();
-            var files = Directory.GetFiles(forest);
-            //player_thread = new BackgroundPlayer(forest, files);
-            new ConnectionSocket();
+            pathName.Text = "sounds/";
+
+            Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
+
+            socket_thread = new ConnectionSocket();
+            serverConnection.Text = socket_thread.StartThread();
+        }
+
+        private void OnApplicationExit(object sender, EventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);
+        }
+
+        private void Path_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pathName.Text = folderBrowserDialog1.SelectedPath;
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
 
         }
     }

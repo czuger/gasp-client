@@ -3,6 +3,8 @@ using System.Threading;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 using System.IO;
+using System.Collections;
+using Newtonsoft.Json.Linq;
 
 public class BackgroundPlayer
 {
@@ -11,12 +13,12 @@ public class BackgroundPlayer
     FadeInOutSampleProvider fader = null;
     public bool interrupt_play = false;
     private bool playback_cleanup_finished = false;
-    Array files_list = null;
+    JArray files_list = null;
     string path = null;
     int fade_in_time = 5000;
     int fade_out_time = 2000;
 
-    public BackgroundPlayer( string _path, Array _files_list )
+    public BackgroundPlayer( string _path, JArray _files_list )
 	{
         // Déclaration du thread
         Thread myThread;
@@ -30,6 +32,7 @@ public class BackgroundPlayer
         myThread = new Thread(new ThreadStart(ThreadLoop));
 
         // Lancement du thread
+        myThread.IsBackground = true;
         myThread.Start();
     }
 
