@@ -34,8 +34,11 @@
             this.pathName = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.serverConnection = new System.Windows.Forms.Label();
+            this.Playing = new System.Windows.Forms.GroupBox();
+            this.CurrentSong = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.Playing.SuspendLayout();
             this.SuspendLayout();
             // 
             // Chemin
@@ -75,7 +78,7 @@
             this.groupBox2.Controls.Add(this.serverConnection);
             this.groupBox2.Location = new System.Drawing.Point(13, 90);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(533, 77);
+            this.groupBox2.Size = new System.Drawing.Size(533, 47);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reseau";
@@ -84,17 +87,40 @@
             // serverConnection
             // 
             this.serverConnection.AutoSize = true;
-            this.serverConnection.Location = new System.Drawing.Point(7, 20);
+            this.serverConnection.Location = new System.Drawing.Point(15, 16);
             this.serverConnection.Name = "serverConnection";
             this.serverConnection.Size = new System.Drawing.Size(126, 13);
             this.serverConnection.TabIndex = 0;
             this.serverConnection.Text = "Connection au serveur ...";
+            this.serverConnection.Click += new System.EventHandler(this.serverConnection_Click);
+            // 
+            // Playing
+            // 
+            this.Playing.Controls.Add(this.CurrentSong);
+            this.Playing.Location = new System.Drawing.Point(13, 143);
+            this.Playing.Name = "Playing";
+            this.Playing.Size = new System.Drawing.Size(533, 57);
+            this.Playing.TabIndex = 4;
+            this.Playing.TabStop = false;
+            this.Playing.Text = "Playing";
+            this.Playing.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // CurrentSong
+            // 
+            this.CurrentSong.AutoSize = true;
+            this.CurrentSong.Location = new System.Drawing.Point(15, 26);
+            this.CurrentSong.Name = "CurrentSong";
+            this.CurrentSong.Size = new System.Drawing.Size(88, 13);
+            this.CurrentSong.TabIndex = 0;
+            this.CurrentSong.Text = "Morceau courant";
+            this.CurrentSong.Click += new System.EventHandler(this.CurrentSong_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(558, 272);
+            this.Controls.Add(this.Playing);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -103,6 +129,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.Playing.ResumeLayout(false);
+            this.Playing.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -114,6 +142,8 @@
         private System.Windows.Forms.Label pathName;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label serverConnection;
+        private System.Windows.Forms.GroupBox Playing;
+        private System.Windows.Forms.Label CurrentSong;
     }
 }
 

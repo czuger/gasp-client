@@ -16,8 +16,12 @@ public class ConnectionSocket
     string serverConnectionOutupt = null;
     // Déclaration du thread
     Thread myThread = null;
+    GameBoardAmbiantPlayer.Form1 front_end = null;
 
-    // public ConnectionSocket(){}
+    public ConnectionSocket(GameBoardAmbiantPlayer.Form1 _front_end)
+    {
+        front_end = _front_end;
+    }
 
     public string StartThread()
     {
@@ -28,13 +32,13 @@ public class ConnectionSocket
         myThread = new Thread(new ThreadStart(ThreadLoop));
 
         // Lancement du thread
-        myThread.IsBackground = true;
+        // myThread.IsBackground = true;
         myThread.Start();
 
-        while (serverConnectionOutupt == null)
-        {
-            Thread.Sleep(500);
-        }
+//        while (serverConnectionOutupt == null)
+//        {
+//            Thread.Sleep(500);
+//        }
 
         return serverConnectionOutupt;
     }
@@ -48,24 +52,28 @@ public class ConnectionSocket
         BackgroundPlayer player_thread = null;
         // Create a TCP/IP  socket.  
         Socket reader = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+        reader.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
         reader.Connect(remoteEP);
 
-        serverConnectionOutupt = "Connecté au serveur";
+        // serverConnectionOutupt = "Connecté au serveur";
+        //cc.Text = "toto";
+        front_end.SetServerConnectionText("Connecté au serveur");
 
         while (Thread.CurrentThread.IsAlive)
         {
             byte[] buffer = new byte[1024];
             reader.Receive(buffer);
             string sPlaylist = Encoding.Default.GetString(buffer);
+            Debug.WriteLine("sPlaylist = " + sPlaylist);
             JArray oPlaylist = JArray.Parse(sPlaylist);
-            Debug.Write(oPlaylist);
+            Debug.WriteLine("oPlaylist = " + oPlaylist);
 
             if(player_thread != null)
             {
                 player_thread.interrupt_play = true;
             }
           
-            player_thread = new BackgroundPlayer( "sounds/", oPlaylist);
+            player_thread = new BackgroundPlayer( "sounds/", oPlaylist, front_end );
         }
     }
 }

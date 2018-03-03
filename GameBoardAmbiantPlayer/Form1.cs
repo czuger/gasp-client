@@ -29,7 +29,7 @@ namespace GameBoardAmbiantPlayer
 
             Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
 
-            socket_thread = new ConnectionSocket();
+            socket_thread = new ConnectionSocket(this);
             serverConnection.Text = socket_thread.StartThread();
         }
 
@@ -52,6 +52,68 @@ namespace GameBoardAmbiantPlayer
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void serverConnection_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // This delegate enables asynchronous calls for setting  
+        // the text property on a TextBox control.  
+        delegate void StringArgReturningVoidDelegate(string text);
+
+        // This method demonstrates a pattern for making thread-safe  
+        // calls on a Windows Forms control.   
+        //  
+        // If the calling thread is different from the thread that  
+        // created the TextBox control, this method creates a  
+        // StringArgReturningVoidDelegate and calls itself asynchronously using the  
+        // Invoke method.  
+        //  
+        // If the calling thread is the same as the thread that created  
+        // the TextBox control, the Text property is set directly.   
+
+        public void SetServerConnectionText(string text)
+        {
+            // InvokeRequired required compares the thread ID of the  
+            // calling thread to the thread ID of the creating thread.  
+            // If these threads are different, it returns true.  
+            if (this.serverConnection.InvokeRequired)
+            {
+                StringArgReturningVoidDelegate d = new StringArgReturningVoidDelegate(SetServerConnectionText);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                this.serverConnection.Text = text;
+            }
+        }
+
+        public void SetCurrentSongText(string text)
+        {
+            // InvokeRequired required compares the thread ID of the  
+            // calling thread to the thread ID of the creating thread.  
+            // If these threads are different, it returns true.  
+            if (this.CurrentSong.InvokeRequired)
+            {
+                StringArgReturningVoidDelegate d = new StringArgReturningVoidDelegate(SetCurrentSongText);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                this.CurrentSong.Text = text;
+            }
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CurrentSong_Click(object sender, EventArgs e)
         {
 
         }

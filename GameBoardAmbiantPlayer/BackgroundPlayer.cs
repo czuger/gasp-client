@@ -17,13 +17,15 @@ public class BackgroundPlayer
     string path = null;
     int fade_in_time = 5000;
     int fade_out_time = 2000;
+    GameBoardAmbiantPlayer.Form1 front_end = null;
 
-    public BackgroundPlayer( string _path, JArray _files_list )
+    public BackgroundPlayer( string _path, JArray _files_list, GameBoardAmbiantPlayer.Form1 _front_end)
 	{
         // Déclaration du thread
         Thread myThread;
         files_list = _files_list;
         path = _path;
+        front_end = _front_end;
 
         // Instanciation du thread, on spécifie dans le 
         // délégué ThreadStart le nom de la méthode qui
@@ -32,7 +34,7 @@ public class BackgroundPlayer
         myThread = new Thread(new ThreadStart(ThreadLoop));
 
         // Lancement du thread
-        myThread.IsBackground = true;
+        // myThread.IsBackground = true;
         myThread.Start();
     }
 
@@ -40,13 +42,15 @@ public class BackgroundPlayer
     {
         foreach (string fileName in files_list)
         {
-            audioFile = new AudioFileReader(@path + fileName);
+            string audioFileName = @path + fileName;
+            audioFile = new AudioFileReader(audioFileName);
             fader = new FadeInOutSampleProvider(audioFile, true);
             outputDevice = new WaveOutEvent();
             outputDevice.PlaybackStopped += OnPlaybackStopped;
             outputDevice.Init(fader);
             fader.BeginFadeIn(fade_in_time);
             outputDevice.Play();
+            front_end.SetCurrentSongText("PLaying : " + audioFileName);
             while (outputDevice != null && outputDevice.PlaybackState == PlaybackState.Playing)
             {
                 Thread.Sleep(500);
