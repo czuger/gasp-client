@@ -21,10 +21,13 @@ namespace GameBoardAmbiantPlayer
         ConnectionSocket socket_thread = null;
         //private Object m_lock = new Object();                       // Lock to protect counter increment 
         //private Queue<string> m_queue = new Queue<string>();
+        AppParams app_params = new AppParams();
 
         public Form1()
         {
             InitializeComponent();
+            app_params.ReadOrCreateParams();
+
             pathName.Text = "sounds/";
 
             Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
@@ -43,22 +46,10 @@ namespace GameBoardAmbiantPlayer
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 pathName.Text = folderBrowserDialog1.SelectedPath;
+
+                string[] folders = System.IO.Directory.GetDirectories(pathName.Text, "*", System.IO.SearchOption.AllDirectories);
+                string hash = Guid.NewGuid().ToString();
             }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void serverConnection_Click(object sender, EventArgs e)
-        {
-
         }
 
         // This delegate enables asynchronous calls for setting  
@@ -106,16 +97,6 @@ namespace GameBoardAmbiantPlayer
             {
                 this.CurrentSong.Text = text;
             }
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CurrentSong_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

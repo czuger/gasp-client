@@ -43,7 +43,6 @@
             // 
             // Chemin
             // 
-            this.Chemin.Enabled = false;
             this.Chemin.Location = new System.Drawing.Point(19, 19);
             this.Chemin.Name = "Chemin";
             this.Chemin.Size = new System.Drawing.Size(75, 23);
@@ -62,7 +61,6 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Musiques";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // pathName
             // 
@@ -82,7 +80,6 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reseau";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // serverConnection
             // 
@@ -92,7 +89,6 @@
             this.serverConnection.Size = new System.Drawing.Size(126, 13);
             this.serverConnection.TabIndex = 0;
             this.serverConnection.Text = "Connection au serveur ...";
-            this.serverConnection.Click += new System.EventHandler(this.serverConnection_Click);
             // 
             // Playing
             // 
@@ -103,7 +99,6 @@
             this.Playing.TabIndex = 4;
             this.Playing.TabStop = false;
             this.Playing.Text = "Playing";
-            this.Playing.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // CurrentSong
             // 
@@ -113,7 +108,6 @@
             this.CurrentSong.Size = new System.Drawing.Size(88, 13);
             this.CurrentSong.TabIndex = 0;
             this.CurrentSong.Text = "Morceau courant";
-            this.CurrentSong.Click += new System.EventHandler(this.CurrentSong_Click);
             // 
             // Form1
             // 

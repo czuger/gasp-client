@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackgroundPlayer.cs" />
+    <Compile Include="AppParams.cs" />
     <Compile Include="ConnectionSocket.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
