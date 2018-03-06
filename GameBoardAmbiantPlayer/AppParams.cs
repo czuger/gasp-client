@@ -16,7 +16,7 @@ namespace GameBoardAmbiantPlayer
             if ( !File.Exists( params_filename ) )
             {
                 guid = Guid.NewGuid().ToString();
-                File.WriteAllText( params_filename, JsonConvert.SerializeObject( this ) );
+                Save();
             }
             else
             {
@@ -27,5 +27,18 @@ namespace GameBoardAmbiantPlayer
                 folders = tmp_param.folders;
             }
         }
+
+        public void SetFolders( string path_name )
+        {
+            string[] folders = Directory.GetDirectories(path_name, "*", System.IO.SearchOption.AllDirectories);
+            this.folders = folders;
+            Save();
+        }
+
+        private void Save()
+        {
+            File.WriteAllText(params_filename, JsonConvert.SerializeObject(this));
+        }
+
     }
 }

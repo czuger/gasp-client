@@ -47,8 +47,7 @@ namespace GameBoardAmbiantPlayer
             {
                 pathName.Text = folderBrowserDialog1.SelectedPath;
 
-                string[] folders = System.IO.Directory.GetDirectories(pathName.Text, "*", System.IO.SearchOption.AllDirectories);
-                string hash = Guid.NewGuid().ToString();
+                app_params.SetFolders(pathName.Text);
             }
         }
 
