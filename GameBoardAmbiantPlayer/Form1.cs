@@ -28,12 +28,12 @@ namespace GameBoardAmbiantPlayer
             InitializeComponent();
             app_params.ReadOrCreateParams();
 
-            pathName.Text = "sounds/";
+            //pathName.Text = "sounds/";
 
-            Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
+            //Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
 
-            socket_thread = new ConnectionSocket(this);
-            serverConnection.Text = socket_thread.StartThread();
+            //socket_thread = new ConnectionSocket(this);
+            //serverConnection.Text = socket_thread.StartThread();
         }
 
         private void OnApplicationExit(object sender, EventArgs e)

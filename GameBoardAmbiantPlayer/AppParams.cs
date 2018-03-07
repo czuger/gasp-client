@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace GameBoardAmbiantPlayer
@@ -8,7 +10,7 @@ namespace GameBoardAmbiantPlayer
     class AppParams
     {
         public string guid;
-        public string[] folders;
+        public IEnumerable<string> folders;
         private const string params_filename = "params.json";
 
         public void ReadOrCreateParams()
@@ -30,15 +32,19 @@ namespace GameBoardAmbiantPlayer
 
         public void SetFolders( string path_name )
         {
-            string[] folders = Directory.GetDirectories(path_name, "*", System.IO.SearchOption.AllDirectories);
-            this.folders = folders;
+            folders = Directory.EnumerateDirectories(path_name);
+            folders = folders.Select(folder => Path.GetFileName(folder));
             Save();
         }
 
         private void Save()
         {
-            File.WriteAllText(params_filename, JsonConvert.SerializeObject(this));
-        }
+            string json_object = JsonConvert.SerializeObject(this);
+            Debug.WriteLine(json_object);
+            File.WriteAllText(params_filename, json_object);
 
+            ServerCommunication sc = new ServerCommunication();
+            sc.SendNewFolders(json_object);
+        }
     }
 }
