@@ -97,5 +97,11 @@ namespace GameBoardAmbiantPlayer
                 this.CurrentSong.Text = text;
             }
         }
+
+        private void SendLinkClick(object sender, EventArgs e)
+        {
+            Debug.WriteLine(Email.Text);
+            app_params.SetEmail(Email.Text);
+        }
     }
 }

@@ -11,7 +11,8 @@ namespace GameBoardAmbiantPlayer
     {
         public string guid;
         public IEnumerable<string> folders;
-        private const string params_filename = "params.json";
+        public string email;
+        private const string params_filename = "params.json";       
 
         public void ReadOrCreateParams()
         {
@@ -27,6 +28,7 @@ namespace GameBoardAmbiantPlayer
                 tmp_param = JsonConvert.DeserializeObject<AppParams>(text);
                 guid = tmp_param.guid;
                 folders = tmp_param.folders;
+                email = tmp_param.email;
             }
         }
 
@@ -37,6 +39,12 @@ namespace GameBoardAmbiantPlayer
             Save();
         }
 
+        public void SetEmail(string _email)
+        {
+            email = _email;
+            Save();
+        }
+
         private void Save()
         {
             string json_object = JsonConvert.SerializeObject(this);
@@ -44,7 +52,7 @@ namespace GameBoardAmbiantPlayer
             File.WriteAllText(params_filename, json_object);
 
             ServerCommunication sc = new ServerCommunication();
-            sc.SendNewFolders(json_object);
+            sc.SendData(json_object);
         }
     }
 }

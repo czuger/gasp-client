@@ -36,9 +36,13 @@
             this.serverConnection = new System.Windows.Forms.Label();
             this.Playing = new System.Windows.Forms.GroupBox();
             this.CurrentSong = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.SendLink = new System.Windows.Forms.Button();
+            this.Email = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Playing.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // Chemin
@@ -109,11 +113,40 @@
             this.CurrentSong.TabIndex = 0;
             this.CurrentSong.Text = "Morceau courant";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.SendLink);
+            this.groupBox3.Controls.Add(this.Email);
+            this.groupBox3.Location = new System.Drawing.Point(13, 206);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(533, 55);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Email";
+            // 
+            // SendLink
+            // 
+            this.SendLink.Location = new System.Drawing.Point(452, 19);
+            this.SendLink.Name = "SendLink";
+            this.SendLink.Size = new System.Drawing.Size(75, 23);
+            this.SendLink.TabIndex = 1;
+            this.SendLink.Text = "Send link";
+            this.SendLink.UseVisualStyleBackColor = true;
+            this.SendLink.Click += new System.EventHandler(this.SendLinkClick);
+            // 
+            // Email
+            // 
+            this.Email.Location = new System.Drawing.Point(6, 19);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(439, 20);
+            this.Email.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(558, 272);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.Playing);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -125,6 +158,8 @@
             this.groupBox2.PerformLayout();
             this.Playing.ResumeLayout(false);
             this.Playing.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -138,6 +173,9 @@
         private System.Windows.Forms.Label serverConnection;
         private System.Windows.Forms.GroupBox Playing;
         private System.Windows.Forms.Label CurrentSong;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button SendLink;
+        private System.Windows.Forms.TextBox Email;
     }
 }
 

@@ -16,8 +16,7 @@ namespace GameBoardAmbiantPlayer
         Form1 front_end;
         Socket connection;
         private const int server_port=6664;
-        private const string send_folders = "SFO";
-        private const string send_email = "SEM";
+        private const string send_data = "SET";
         private const string get_music = "GMU";
 
         public ServerCommunication(Form1 _front_end = null)
@@ -26,10 +25,10 @@ namespace GameBoardAmbiantPlayer
             front_end = _front_end;
         }
 
-        public void SendNewFolders( string folders)
+        public void SendData( string json )
         {
-            EstablishConnection(send_folders);
-            SendString(folders);
+            EstablishConnection(send_data);
+            SendString(json);
             EndCommunication();
         }
 
