@@ -32,27 +32,27 @@ namespace GameBoardAmbiantPlayer
             }
         }
 
-        public void SetFolders( string path_name )
+        public string SetFolders( string path_name )
         {
             folders = Directory.EnumerateDirectories(path_name);
             folders = folders.Select(folder => Path.GetFileName(folder));
-            Save();
+            return Save();
         }
 
-        public void SetEmail(string _email)
+        public string SetEmail(string _email)
         {
             email = _email;
-            Save();
+            return Save();
         }
 
-        private void Save()
+        private string Save()
         {
             string json_object = JsonConvert.SerializeObject(this);
             Debug.WriteLine(json_object);
             File.WriteAllText(params_filename, json_object);
 
             ServerCommunication sc = new ServerCommunication();
-            sc.SendData(json_object);
+            return sc.SendData(json_object);
         }
     }
 }

@@ -47,7 +47,7 @@ namespace GameBoardAmbiantPlayer
             {
                 pathName.Text = folderBrowserDialog1.SelectedPath;
 
-                app_params.SetFolders(pathName.Text);
+                CommandLink.Text = app_params.SetFolders(pathName.Text);
             }
         }
 
@@ -101,7 +101,7 @@ namespace GameBoardAmbiantPlayer
         private void SendLinkClick(object sender, EventArgs e)
         {
             Debug.WriteLine(Email.Text);
-            app_params.SetEmail(Email.Text);
+            CommandLink.Text = app_params.SetEmail(Email.Text);
         }
     }
 }

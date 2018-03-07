@@ -39,10 +39,13 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.SendLink = new System.Windows.Forms.Button();
             this.Email = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.CommandLink = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Playing.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // Chemin
@@ -97,7 +100,7 @@
             // Playing
             // 
             this.Playing.Controls.Add(this.CurrentSong);
-            this.Playing.Location = new System.Drawing.Point(13, 143);
+            this.Playing.Location = new System.Drawing.Point(13, 195);
             this.Playing.Name = "Playing";
             this.Playing.Size = new System.Drawing.Size(533, 57);
             this.Playing.TabIndex = 4;
@@ -117,7 +120,7 @@
             // 
             this.groupBox3.Controls.Add(this.SendLink);
             this.groupBox3.Controls.Add(this.Email);
-            this.groupBox3.Location = new System.Drawing.Point(13, 206);
+            this.groupBox3.Location = new System.Drawing.Point(13, 258);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(533, 55);
             this.groupBox3.TabIndex = 5;
@@ -141,11 +144,31 @@
             this.Email.Size = new System.Drawing.Size(439, 20);
             this.Email.TabIndex = 0;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.CommandLink);
+            this.groupBox4.Location = new System.Drawing.Point(13, 144);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(533, 45);
+            this.groupBox4.TabIndex = 6;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Command link";
+            // 
+            // CommandLink
+            // 
+            this.CommandLink.AutoSize = true;
+            this.CommandLink.Location = new System.Drawing.Point(18, 20);
+            this.CommandLink.Name = "CommandLink";
+            this.CommandLink.Size = new System.Drawing.Size(69, 13);
+            this.CommandLink.TabIndex = 0;
+            this.CommandLink.Text = "Not available";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(558, 272);
+            this.ClientSize = new System.Drawing.Size(558, 325);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.Playing);
             this.Controls.Add(this.groupBox2);
@@ -160,6 +183,8 @@
             this.Playing.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -176,6 +201,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button SendLink;
         private System.Windows.Forms.TextBox Email;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label CommandLink;
     }
 }
 

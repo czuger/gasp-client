@@ -25,11 +25,13 @@ namespace GameBoardAmbiantPlayer
             front_end = _front_end;
         }
 
-        public void SendData( string json )
-        {
+        public string SendData( string json )
+        {            
             EstablishConnection(send_data);
             SendString(json);
+            string hash = RecieveHash();
             EndCommunication();
+            return hash;
         }
 
         private void EstablishConnection(string socket_usage)
@@ -52,6 +54,14 @@ namespace GameBoardAmbiantPlayer
             byte[] buffer = new byte[4096];
             buffer = Encoding.UTF8.GetBytes(data);
             connection.Send(buffer);
+        }
+
+        public string RecieveHash()
+        {
+            byte[] buffer = new byte[4096];
+            connection.Receive(buffer);
+            string hash = Encoding.UTF8.GetString(buffer);
+            return hash;
         }
     }
 }
