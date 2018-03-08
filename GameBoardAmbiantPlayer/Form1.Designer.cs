@@ -40,7 +40,7 @@
             this.SendLink = new System.Windows.Forms.Button();
             this.Email = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.CommandLink = new System.Windows.Forms.Label();
+            this.CommandLink = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Playing.SuspendLayout();
@@ -74,9 +74,9 @@
             this.pathName.AutoSize = true;
             this.pathName.Location = new System.Drawing.Point(26, 45);
             this.pathName.Name = "pathName";
-            this.pathName.Size = new System.Drawing.Size(56, 13);
+            this.pathName.Size = new System.Drawing.Size(88, 13);
             this.pathName.TabIndex = 3;
-            this.pathName.Text = "pathName";
+            this.pathName.Text = "No selected path";
             // 
             // groupBox2
             // 
@@ -93,9 +93,9 @@
             this.serverConnection.AutoSize = true;
             this.serverConnection.Location = new System.Drawing.Point(15, 16);
             this.serverConnection.Name = "serverConnection";
-            this.serverConnection.Size = new System.Drawing.Size(126, 13);
+            this.serverConnection.Size = new System.Drawing.Size(109, 13);
             this.serverConnection.TabIndex = 0;
-            this.serverConnection.Text = "Connection au serveur ...";
+            this.serverConnection.Text = "No server connection";
             // 
             // Playing
             // 
@@ -112,9 +112,9 @@
             this.CurrentSong.AutoSize = true;
             this.CurrentSong.Location = new System.Drawing.Point(15, 26);
             this.CurrentSong.Name = "CurrentSong";
-            this.CurrentSong.Size = new System.Drawing.Size(88, 13);
+            this.CurrentSong.Size = new System.Drawing.Size(67, 13);
             this.CurrentSong.TabIndex = 0;
-            this.CurrentSong.Text = "Morceau courant";
+            this.CurrentSong.Text = "Current song";
             // 
             // groupBox3
             // 
@@ -157,11 +157,12 @@
             // CommandLink
             // 
             this.CommandLink.AutoSize = true;
-            this.CommandLink.Location = new System.Drawing.Point(18, 20);
+            this.CommandLink.Location = new System.Drawing.Point(15, 16);
             this.CommandLink.Name = "CommandLink";
-            this.CommandLink.Size = new System.Drawing.Size(69, 13);
-            this.CommandLink.TabIndex = 0;
-            this.CommandLink.Text = "Not available";
+            this.CommandLink.Size = new System.Drawing.Size(40, 13);
+            this.CommandLink.TabIndex = 1;
+            this.CommandLink.TabStop = true;
+            this.CommandLink.Text = "No link";
             // 
             // Form1
             // 
@@ -174,7 +175,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Gameboard Ambiant Sound Plalyer";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -202,7 +203,7 @@
         private System.Windows.Forms.Button SendLink;
         private System.Windows.Forms.TextBox Email;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label CommandLink;
+        private System.Windows.Forms.LinkLabel CommandLink;
     }
 }
 

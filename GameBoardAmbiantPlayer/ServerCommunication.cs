@@ -52,7 +52,7 @@ namespace GameBoardAmbiantPlayer
         private void SendString( string data )
         {
             byte[] buffer = new byte[4096];
-            buffer = Encoding.UTF8.GetBytes(data);
+            buffer = Encoding.UTF8.GetBytes(data+"\n");
             connection.Send(buffer);
         }
 

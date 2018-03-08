@@ -28,7 +28,8 @@ namespace GameBoardAmbiantPlayer
             InitializeComponent();
             app_params.ReadOrCreateParams();
 
-            //pathName.Text = "sounds/";
+            Email.Text = app_params.email;
+            pathName.Text = app_params.path;
 
             //Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
 
@@ -47,7 +48,7 @@ namespace GameBoardAmbiantPlayer
             {
                 pathName.Text = folderBrowserDialog1.SelectedPath;
 
-                CommandLink.Text = app_params.SetFolders(pathName.Text);
+                app_params.SetFolders(pathName.Text);
             }
         }
 
@@ -101,7 +102,8 @@ namespace GameBoardAmbiantPlayer
         private void SendLinkClick(object sender, EventArgs e)
         {
             Debug.WriteLine(Email.Text);
-            CommandLink.Text = app_params.SetEmail(Email.Text);
+            CommandLink.Text = "http://gasp.ieroe.com/" + app_params.SetEmail(Email.Text);
         }
+
     }
 }

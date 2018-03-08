@@ -12,6 +12,7 @@ namespace GameBoardAmbiantPlayer
         public string guid;
         public IEnumerable<string> folders;
         public string email;
+        public string path;
         private const string params_filename = "params.json";       
 
         public void ReadOrCreateParams()
@@ -29,11 +30,13 @@ namespace GameBoardAmbiantPlayer
                 guid = tmp_param.guid;
                 folders = tmp_param.folders;
                 email = tmp_param.email;
+                path = tmp_param.path;
             }
         }
 
         public string SetFolders( string path_name )
         {
+            path = path_name;
             folders = Directory.EnumerateDirectories(path_name);
             folders = folders.Select(folder => Path.GetFileName(folder));
             return Save();
